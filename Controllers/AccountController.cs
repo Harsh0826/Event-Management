@@ -32,17 +32,37 @@ namespace EventManagement.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(string username, string password)
+        [HttpPost]
+        public IActionResult Register(string fullname, string username, string email, string password, string confirmPassword)
         {
+            if (password != confirmPassword)
+            {
+                ModelState.AddModelError("", "Passwords do not match.");
+                return View();
+            }
+
             if (_context.Users.Any(u => u.UserName == username))
             {
                 ModelState.AddModelError("", "Username already taken.");
                 return View();
             }
 
-            var newUser = new User { UserName = username, Password = password };
+            if (_context.Users.Any(u => u.Email == email))
+            {
+                ModelState.AddModelError("", "Email already registered.");
+                return View();
+            }
+
+            var newUser = new User
+            {
+                FullName = fullname,
+                UserName = username,
+                Email = email,
+                Password = password
+            };
             _context.Users.Add(newUser);
             _context.SaveChanges();
+
             return RedirectToAction("Login");
         }
 

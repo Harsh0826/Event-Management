@@ -306,3 +306,12 @@ button:active {
   transform: translateY(0);
   box-shadow: 0 2px 7px rgba(255, 255, 255, 0.3);
 }
+
+.error-box {
+    color: #d8000c;
+    font-weight: bold;
+    padding: px;
+    border-radius: 6px;
+    margin: 3px;
+    text-align: left;
+}
