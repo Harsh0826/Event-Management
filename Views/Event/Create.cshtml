@@ -1,0 +1,10 @@
+@model EventManagement.Models.Event
+<form method="post">
+    <h2>Create Event</h2>
+    <input name="Title" placeholder="Title" required />
+    <textarea name="Description" placeholder="Description"></textarea>
+    <input name="Date" type="date" required />
+    <input name="Time" type="time" required />
+    <input name="Location" placeholder="Location" required />
+    <button type="submit">Add</button>
+</form>

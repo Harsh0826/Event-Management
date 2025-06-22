@@ -1,0 +1,11 @@
+@model EventManagement.Models.Event
+<form method="post">
+    <h2>Edit Event</h2>
+    <input name="Id" value="@Model.Id" type="hidden" />
+    <input name="Title" value="@Model.Title" required />
+    <textarea name="Description">@Model.Description</textarea>
+    <input name="Date" value="@Model.Date.ToString("yyyy-MM-dd")" type="date" required />
+    <input name="Time" value="@Model.Time" type="time" required />
+    <input name="Location" value="@Model.Location" required />
+    <button type="submit">Save</button>
+</form>
